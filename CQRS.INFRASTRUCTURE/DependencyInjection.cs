@@ -1,8 +1,10 @@
 ﻿using CQRS.CORE.Interfaces;
+using CQRS.CORE.Options;
 using CQRS.INFRASTRUCTURE.Data;
 using CQRS.INFRASTRUCTURE.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,9 +17,9 @@ namespace CQRS.INFRASTRUCTURE
     {
         public static IServiceCollection AddInfrastructureDI(this IServiceCollection services)
         {
-            services.AddDbContext<AppDbContext>(options =>
+            services.AddDbContext<AppDbContext>((provider, options) =>
             {
-                options.UseSqlServer("Server=.;Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=CQRS;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False");
+                options.UseSqlServer(provider.GetRequiredService<IOptionsSnapshot<ConnectionStringOptions>>().Value.DefaultConnection);
             });
 
             services.AddScoped<IEmployeeRepository, EmployeeRepository>();
