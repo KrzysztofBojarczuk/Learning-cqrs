@@ -12,6 +12,11 @@ namespace CQRS.INFRASTRUCTURE.Repositories
 {
     public class EmployeeRepository(AppDbContext dbContext) : IEmployeeRepository
     {
+        public async Task<int> GetNumberOfEmployeesAsync()
+        {
+            return await dbContext.Employees.CountAsync();
+        }
+
         public async Task<IEnumerable<EmployeeEntity>> GetEmployees()
         {
             return await dbContext.Employees.ToListAsync();

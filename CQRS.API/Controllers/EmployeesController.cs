@@ -25,6 +25,13 @@ namespace CQRS.API.Controllers
             return Ok(result);
         }
 
+        [HttpGet("GetNumberOfEmployee")]
+        public async Task<IActionResult> GetNumberOfEmployeesAsync()
+        {
+            var result = await sender.Send(new GetNumberOfEmployeesQuery());
+            return Ok(result);
+        }
+
         [HttpGet("{employeeId}")]
         public async Task<IActionResult> GetEmployeeByIdAsync([FromRoute] Guid employeeId)
         {
