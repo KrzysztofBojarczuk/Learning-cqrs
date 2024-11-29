@@ -1,5 +1,7 @@
 using CQRS.API;
 using CQRS.CORE.Options;
+using CQRS.INFRASTRUCTURE.Data;
+using Microsoft.AspNetCore.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,6 +18,11 @@ builder.Services.Configure<ConnectionStringOptions>(builder.Configuration.GetSec
 
 builder.Services.AddAppDI(builder.Configuration);
 
+builder.Services.AddAuthorization();
+
+builder.Services.AddIdentityApiEndpoints<IdentityUser>()
+    .AddEntityFrameworkStores<AppDbContext>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -31,6 +38,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.MapIdentityApi<IdentityUser>();
 
 app.UseAuthorization();
 
