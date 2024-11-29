@@ -2,6 +2,7 @@
 using CQRS.APPLICATION.Queries;
 using CQRS.CORE.Entities;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,6 +10,7 @@ namespace CQRS.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    //[Authorize]
     public class EmployeesController(ISender sender) : ControllerBase
     {
         [HttpPost("")]

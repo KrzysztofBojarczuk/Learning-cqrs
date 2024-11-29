@@ -11,7 +11,6 @@ namespace CQRS.APPLICATION.Commands
 {
     public record AddEmployeeCommand(EmployeeEntity Employee) : IRequest<EmployeeEntity>;
 
-
     public class AddEmployeeCommandHandler(IEmployeeRepository employeeRepository, IPublisher mediator)
         : IRequestHandler<AddEmployeeCommand, EmployeeEntity>
     {
