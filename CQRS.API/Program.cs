@@ -1,4 +1,5 @@
 using CQRS.API;
+using CQRS.CORE.Entities;
 using CQRS.CORE.Options;
 using CQRS.INFRASTRUCTURE.Data;
 using Microsoft.AspNetCore.Identity;
@@ -20,7 +21,7 @@ builder.Services.AddAppDI(builder.Configuration);
 
 builder.Services.AddAuthorization();
 
-builder.Services.AddIdentityApiEndpoints<IdentityUser>()
+builder.Services.AddIdentityApiEndpoints<AppUserEntity>()
     .AddEntityFrameworkStores<AppDbContext>();
 
 var app = builder.Build();
