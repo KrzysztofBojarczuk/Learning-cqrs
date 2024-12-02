@@ -11,7 +11,7 @@ namespace CQRS.CORE.Interfaces
     {
         Task<int> GetNumberOfEmployeesAsync();
         Task<IEnumerable<EmployeeEntity>> GetUserEmployeesAsync(string appUserId);
-        Task<IEnumerable<EmployeeEntity>> GetEmployees();
+        Task<IEnumerable<EmployeeEntity>> GetEmployeesAsync();
         Task<EmployeeEntity> GetEmployeeByIdAsync(Guid id);
         Task<EmployeeEntity> AddEmployeeAsync(EmployeeEntity entity);
         Task<EmployeeEntity> UpdateEmployeeAsync(Guid employeeId, EmployeeEntity entity);

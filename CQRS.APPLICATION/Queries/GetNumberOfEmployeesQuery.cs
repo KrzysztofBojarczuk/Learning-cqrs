@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 namespace CQRS.APPLICATION.Queries
 {
     public record GetNumberOfEmployeesQuery() : IRequest<int>;
+
     public class GetNumberOfEmployeesQueryHandler(IEmployeeRepository employeeRepository)
         : IRequestHandler<GetNumberOfEmployeesQuery, int>
     {

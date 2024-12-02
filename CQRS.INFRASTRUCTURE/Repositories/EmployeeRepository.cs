@@ -23,8 +23,7 @@ namespace CQRS.INFRASTRUCTURE.Repositories
         {
             return await dbContext.Employees.CountAsync();
         }
-
-        public async Task<IEnumerable<EmployeeEntity>> GetEmployees()
+        public async Task<IEnumerable<EmployeeEntity>> GetEmployeesAsync()
         {
             return await dbContext.Employees.ToListAsync();
         }

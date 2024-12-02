@@ -9,13 +9,14 @@ using System.Threading.Tasks;
 
 namespace CQRS.APPLICATION.Queries
 {
-    public class GetUserEmployeesQuery : IRequest<IEnumerable<EmployeeEntity>>;
+    public record GetUserEmployeesQuery(string appUserId) : IRequest<IEnumerable<EmployeeEntity>>;
+
     public class GetUserEmployeesQueryHandler(IEmployeeRepository employeeRepository)
         : IRequestHandler<GetUserEmployeesQuery, IEnumerable<EmployeeEntity>>
     {
         public async Task<IEnumerable<EmployeeEntity>> Handle(GetUserEmployeesQuery request, CancellationToken cancellationToken)
         {
-            return await employeeRepository.GetUserEmployeesAsync(request.ToString());
+            return await employeeRepository.GetUserEmployeesAsync(request.appUserId);
         }
     }
 }
