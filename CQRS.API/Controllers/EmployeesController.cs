@@ -16,6 +16,18 @@ namespace CQRS.API.Controllers
     [Authorize]
     public class EmployeesController(ISender sender, UserManager<AppUserEntity> userManager, IMapper mapper) : ControllerBase
     {
+        [HttpGet("user")]
+        public async Task<IActionResult> GetUserEmployeesAsync()
+        {
+            var userId = userManager.GetUserId(User);
+
+            var result = await sender.Send(new GetUserEmployeesQuery(userId));
+
+            var employeeDtos = mapper.Map<IEnumerable<EmployeeGetDto>>(result);
+
+            return Ok(employeeDtos);
+        }
+
         [HttpPost("")]
         public async Task<IActionResult> AddEmployeeAsync([FromBody] EmployeeCreateDto employeeDto)
         {
