@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
-using CQRS.APPLICATION.Commands;
 using CQRS.APPLICATION.Dtos;
-using CQRS.APPLICATION.Queries;
+using CQRS.APPLICATION.Features.Employee.Commands;
+using CQRS.APPLICATION.Features.Employee.Queries;
 using CQRS.CORE.Entities;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
