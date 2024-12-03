@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CQRS.APPLICATION.Commands
+namespace CQRS.APPLICATION.Features.Employee.Commands
 {
     public record DeleteEmployeeCommand(Guid EmployeeId) : IRequest<bool>;
 

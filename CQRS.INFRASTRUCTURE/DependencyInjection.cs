@@ -23,6 +23,7 @@ namespace CQRS.INFRASTRUCTURE
             });
 
             services.AddScoped<IEmployeeRepository, EmployeeRepository>();
+            services.AddScoped<IUserRepository, UsersRepository>();
 
             return services;
         }
