@@ -14,9 +14,18 @@ namespace CQRS.INFRASTRUCTURE.Repositories
 {
     internal class UsersRepository(AppDbContext dbContext, UserManager<AppUserEntity> userManager) : IUserRepository
     {
-        public Task<AppUserEntity> DeleteUserAsync(string appUserId)
+        public async Task<bool> DeleteUserAsync(string appUserId)
         {
-            throw new NotImplementedException();
+            var user = await userManager.FindByIdAsync(appUserId);
+
+            if (user is not null)
+            {
+                await userManager.DeleteAsync(user);
+
+                return true;
+            }
+
+            return false;
         }
 
         public Task<int> GetNumberUsersRepository()

@@ -10,7 +10,7 @@ namespace CQRS.APPLICATION.Features.Employee.Commands
 {
     public record DeleteEmployeeCommand(Guid EmployeeId) : IRequest<bool>;
 
-    internal class DeleteEmployeeCommandHandler(IEmployeeRepository employeeRepository)
+    public class DeleteEmployeeCommandHandler(IEmployeeRepository employeeRepository)
         : IRequestHandler<DeleteEmployeeCommand, bool>
     {
         public async Task<bool> Handle(DeleteEmployeeCommand request, CancellationToken cancellationToken)

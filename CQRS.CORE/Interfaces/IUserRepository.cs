@@ -11,7 +11,7 @@ namespace CQRS.CORE.Interfaces
     {
         Task<ICollection<AppUserEntity>> GettAllUsersAsync();
         Task<AppUserEntity> UpdateUserAsync(AppUserEntity updateUser);
-        Task<AppUserEntity> DeleteUserAsync(string appUserId);
+        Task<bool> DeleteUserAsync(string appUserId);
         Task<AppUserEntity> GetUserByIdAsync(string appUserId);
         Task<int> GetNumberUsersRepository();
     }
