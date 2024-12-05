@@ -17,6 +17,7 @@ namespace CQRS.INFRASTRUCTURE.Data
         { }
 
         public DbSet<EmployeeEntity> Employees { get; set; }
+        public DbSet<TaskEntity> Tasks { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -24,6 +25,12 @@ namespace CQRS.INFRASTRUCTURE.Data
 
             modelBuilder.Entity<AppUserEntity>()
                 .HasMany(e => e.EmployeeEntities)
+                .WithOne(e => e.AppUserEntity)
+                .HasForeignKey(e => e.AppUserId)
+                .IsRequired();
+
+            modelBuilder.Entity<AppUserEntity>()
+                .HasMany(e => e.TaskEntity)
                 .WithOne(e => e.AppUserEntity)
                 .HasForeignKey(e => e.AppUserId)
                 .IsRequired();
