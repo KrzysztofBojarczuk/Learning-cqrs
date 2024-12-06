@@ -12,7 +12,7 @@ namespace CQRS.INFRASTRUCTURE.Repositories
 {
     public class TaskRepository(AppDbContext dbContext) : ITaskRepository
     {
-        public async Task<IEnumerable<TaskEntity>> GetTasksAsync(string appUserId)
+        public async Task<IEnumerable<TaskEntity>> GetUserTasksAsync(string appUserId)
         {
             return await dbContext.Tasks
                 .Where(t => t.AppUserId == appUserId)
