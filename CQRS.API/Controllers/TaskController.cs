@@ -44,5 +44,13 @@ namespace CQRS.API.Controllers
 
             return Ok(result);
         }
+
+        [HttpDelete("{taskId}")]
+        public async Task<IActionResult> DeleteTaskAsync([FromRoute] Guid taskId)
+        {
+            var result = await sender.Send(new DeleteTaskCommand(taskId));
+
+            return Ok(result);
+        }
     }
 }
