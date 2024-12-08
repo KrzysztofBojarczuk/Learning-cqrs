@@ -5,6 +5,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatButtonModule } from '@angular/material/button';
 import { TableemployeeComponent } from './employee/tableemployee/tableemployee.component';
 import { LoginComponent } from './authentication/login/login.component';
+import { RegisterComponent } from './authentication/register/register.component';
 
 @Component({
   selector: 'app-root',
@@ -15,6 +16,7 @@ import { LoginComponent } from './authentication/login/login.component';
     MatIconModule,
     TableemployeeComponent,
     LoginComponent,
+    RegisterComponent,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',

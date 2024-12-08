@@ -4,8 +4,8 @@
 >
   <mat-card style="padding: 20px">
     <form
-      [formGroup]="loginForm"
-      (ngSubmit)="onSubmit(loginForm.value)"
+      [formGroup]="registerForm"
+      (ngSubmit)="onSubmit(registerForm.value)"
       class="row"
       style="max-width: 400px; width: 100%"
     >
@@ -17,7 +17,7 @@
           (blur)="updateErrorMessage()"
           required
         />
-        @if (loginForm.invalid) {
+        @if (registerForm.invalid) {
         <mat-error>{{ errorMessage() }}</mat-error>
         }
       </mat-form-field>
@@ -31,7 +31,7 @@
           (blur)="updateErrorMessage()"
           required
         />
-        @if (loginForm.invalid) {
+        @if (registerForm.invalid) {
         <mat-error>{{ errorMessage() }}</mat-error>
         }
       </mat-form-field>
@@ -41,9 +41,9 @@
           mat-raised-button
           color="primary"
           type="submit"
-          [disabled]="loginForm.invalid"
+          [disabled]="registerForm.invalid"
         >
-          Sign up
+          Submit
         </button>
       </div>
     </form>

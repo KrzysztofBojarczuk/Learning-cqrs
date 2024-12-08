@@ -21,9 +21,9 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { merge } from 'rxjs';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrl: './login.component.scss',
+  selector: 'app-register',
+  templateUrl: './register.component.html',
+  styleUrl: './register.component.scss',
   imports: [
     FormsModule,
     MatFormFieldModule,
@@ -34,8 +34,8 @@ import { merge } from 'rxjs';
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class LoginComponent {
-  loginForm: FormGroup;
+export class RegisterComponent {
+  registerForm: FormGroup;
   errorMessage = signal('');
 
   constructor(
@@ -43,7 +43,7 @@ export class LoginComponent {
     private authService: AuthService,
     private router: Router
   ) {
-    this.loginForm = this.fb.group({
+    this.registerForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: [
         '',
@@ -56,13 +56,13 @@ export class LoginComponent {
         ],
       ],
     });
-    merge(this.loginForm.statusChanges, this.loginForm.valueChanges)
+    merge(this.registerForm.statusChanges, this.registerForm.valueChanges)
       .pipe(takeUntilDestroyed())
       .subscribe(() => this.updateErrorMessage());
   }
 
-  onSubmit(loginUser: LoginUser) {
-    this.authService.loginUserService(loginUser).subscribe();
+  onSubmit(registerUser: any) {
+    this.authService.registerUserService(registerUser).subscribe();
   }
 
   updateErrorMessage() {
@@ -75,15 +75,15 @@ export class LoginComponent {
         'Password must include at least one uppercase letter and one special character',
     } as const;
 
-    if (this.loginForm.hasError('required', ['email'])) {
+    if (this.registerForm.hasError('required', ['email'])) {
       this.errorMessage.set(errorMessages['emailRequired']);
       return;
     }
-    if (this.loginForm.hasError('email', ['email'])) {
+    if (this.registerForm.hasError('email', ['email'])) {
       this.errorMessage.set(errorMessages['emailInvalid']);
       return;
     }
-    const passwordControl = this.loginForm.get('password');
+    const passwordControl = this.registerForm.get('password');
     if (passwordControl?.hasError('required')) {
       this.errorMessage.set(errorMessages['passwordRequired']);
       return;
