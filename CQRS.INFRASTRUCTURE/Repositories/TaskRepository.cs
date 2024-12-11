@@ -61,5 +61,21 @@ namespace CQRS.INFRASTRUCTURE.Repositories
 
             return false;
         }
+
+        public async Task<TaskEntity> UpdateTaskAsync(Guid id, TaskEntity entity)
+        {
+            var task = await dbContext.Tasks.FirstOrDefaultAsync(x => x.Id == id);
+
+            if (task is not null) {
+                task.Name = entity.Name;
+                task.Description = entity.Description;
+
+                await dbContext.SaveChangesAsync();
+
+                return task;
+            }
+
+            return entity;
+        }
     }
 }

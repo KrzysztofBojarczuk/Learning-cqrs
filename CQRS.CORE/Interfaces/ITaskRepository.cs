@@ -13,6 +13,7 @@ namespace CQRS.CORE.Interfaces
         Task<TaskEntity> GetTaskByIdAsync(Guid id);
         Task<TaskEntity> AddTaskAsync(TaskEntity entity);
         Task<TaskEntity> TaskAsync(Guid employeeId, TaskEntity entity);
+        Task<TaskEntity> UpdateTaskAsync(Guid taskId, TaskEntity entity);
         Task<bool> DeleteTaskAsync(Guid taskId);
     }
 }
