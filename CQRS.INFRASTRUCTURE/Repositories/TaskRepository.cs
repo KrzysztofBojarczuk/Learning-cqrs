@@ -66,7 +66,8 @@ namespace CQRS.INFRASTRUCTURE.Repositories
         {
             var task = await dbContext.Tasks.FirstOrDefaultAsync(x => x.Id == id);
 
-            if (task is not null) {
+            if (task is not null) 
+            {
                 task.Name = entity.Name;
                 task.Description = entity.Description;
 
