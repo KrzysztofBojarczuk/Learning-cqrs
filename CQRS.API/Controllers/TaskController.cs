@@ -45,6 +45,16 @@ namespace CQRS.API.Controllers
             return Ok(result);
         }
 
+        [HttpPut("{taskId}")]
+        public async Task<IActionResult> UpdateTaskAsync([FromRoute] Guid taskId, [FromBody] TaskCreateDto updateTaskDto)
+        {
+            var taskEntity = mapper.Map<TaskEntity>(updateTaskDto);
+
+            var result = await sender.Send(new UpdateTaskCommand(taskId, taskEntity));
+
+            return Ok(result);
+        }
+
         [HttpDelete("{taskId}")]
         public async Task<IActionResult> DeleteTaskAsync([FromRoute] Guid taskId)
         {
