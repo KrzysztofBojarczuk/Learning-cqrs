@@ -11,5 +11,6 @@ namespace CQRS.CORE.Entities
     {
         public ICollection<EmployeeEntity> EmployeeEntities { get; set; } = new List<EmployeeEntity>();
         public ICollection<TaskEntity> TaskEntity { get; set; } = new List<TaskEntity>();
+        public ICollection<AddressEntity> AddressEntity { get; set; } = new List<AddressEntity>();
     }
 }
