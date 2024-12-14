@@ -34,6 +34,12 @@ namespace CQRS.INFRASTRUCTURE.Data
                 .WithOne(e => e.AppUserEntity)
                 .HasForeignKey(e => e.AppUserId)
                 .IsRequired();
+
+            modelBuilder.Entity<AppUserEntity>()
+               .HasMany(e => e.AddressEntity)
+               .WithOne(e => e.AppUserEntity)
+               .HasForeignKey(e => e.AppUserId)
+               .IsRequired();
         }
     }
 }

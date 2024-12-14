@@ -20,6 +20,10 @@ namespace CQRS.APPLICATION.AutoMapper
             CreateMap<TaskCreateDto, TaskEntity>();
 
             CreateMap<TaskEntity, TaskGetDto>();
+
+            CreateMap<AddressCreateDto, AddressEntity>();
+
+            CreateMap<AddressEntity, AddressGetDto>();
         }
     }
 }
