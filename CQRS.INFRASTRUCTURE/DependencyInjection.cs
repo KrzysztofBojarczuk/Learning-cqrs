@@ -25,6 +25,7 @@ namespace CQRS.INFRASTRUCTURE
             services.AddScoped<IEmployeeRepository, EmployeeRepository>();
             services.AddScoped<IUserRepository, UsersRepository>();
             services.AddScoped<ITaskRepository, TaskRepository>();
+            services.AddScoped<IAddressRepository, AddressRepository>();
 
             return services;
         }

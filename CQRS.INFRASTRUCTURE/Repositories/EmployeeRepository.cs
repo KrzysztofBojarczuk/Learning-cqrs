@@ -15,7 +15,7 @@ namespace CQRS.INFRASTRUCTURE.Repositories
         public async Task<IEnumerable<EmployeeEntity>> GetUserEmployeesAsync(string appUserId)
         {
             return await dbContext.Employees
-                .Where(e => e.AppUserId == appUserId)
+                .Where(x => x.AppUserId == appUserId)
                 .ToListAsync();
         }
 

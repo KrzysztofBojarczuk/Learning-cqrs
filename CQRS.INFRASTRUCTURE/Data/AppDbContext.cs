@@ -18,6 +18,7 @@ namespace CQRS.INFRASTRUCTURE.Data
 
         public DbSet<EmployeeEntity> Employees { get; set; }
         public DbSet<TaskEntity> Tasks { get; set; }
+        public DbSet<AddressEntity> Address { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
