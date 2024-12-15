@@ -9,14 +9,14 @@ using System.Threading.Tasks;
 
 namespace CQRS.APPLICATION.Features.Employee.Commands
 {
-    public record AddEmployeeCommand(EmployeeEntity Employee) : IRequest<EmployeeEntity>;
+    public record AddEmployeeCommand(EmployeeEntity employee) : IRequest<EmployeeEntity>;
 
     public class AddEmployeeCommandHandler(IEmployeeRepository employeeRepository, IPublisher mediator)
         : IRequestHandler<AddEmployeeCommand, EmployeeEntity>
     {
         public async Task<EmployeeEntity> Handle(AddEmployeeCommand request, CancellationToken cancellationToken)
         {
-            var user = await employeeRepository.AddEmployeeAsync(request.Employee);
+            var user = await employeeRepository.AddEmployeeAsync(request.employee);
             return user;
         }
     }

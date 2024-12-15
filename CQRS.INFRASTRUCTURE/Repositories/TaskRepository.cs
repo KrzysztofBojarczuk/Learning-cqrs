@@ -33,22 +33,6 @@ namespace CQRS.INFRASTRUCTURE.Repositories
             return entity;
         }
 
-        public async Task<TaskEntity> TaskAsync(Guid employeeId, TaskEntity entity)
-        {
-            var task = await dbContext.Tasks.FirstOrDefaultAsync(x => x.Id == employeeId);
-
-            if (task is not null)
-            {
-                task.Name = entity.Name;
-                task.Description = entity.Description;
-
-                await dbContext.SaveChangesAsync();
-                return task;
-            }
-
-            return null; 
-        }
-
         public async Task<bool> DeleteTaskAsync(Guid taskId)
         {
             var task = await dbContext.Tasks.FirstOrDefaultAsync(t => t.Id == taskId);
