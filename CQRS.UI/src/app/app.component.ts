@@ -3,9 +3,9 @@ import { RouterOutlet } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatButtonModule } from '@angular/material/button';
-import { TableemployeeComponent } from './employee/tableemployee/tableemployee.component';
 import { LoginComponent } from './authentication/login/login.component';
 import { RegisterComponent } from './authentication/register/register.component';
+import { TableemployeeComponent } from './components/employee/tableemployee/tableemployee.component';
 
 @Component({
   selector: 'app-root',

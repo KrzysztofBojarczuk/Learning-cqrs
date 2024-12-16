@@ -19,10 +19,16 @@ namespace CQRS.INFRASTRUCTURE.Repositories
                 .ToListAsync();
         }
 
+        public async Task<int> GetUserNumberOfEmployeesAsync(string appUserId)
+        {
+            return await dbContext.Employees.Where(x => x.AppUserId == appUserId).CountAsync();
+        }
+
         public async Task<int> GetNumberOfEmployeesAsync()
         {
             return await dbContext.Employees.CountAsync();
         }
+
         public async Task<IEnumerable<EmployeeEntity>> GetEmployeesAsync()
         {
             return await dbContext.Employees.ToListAsync();
