@@ -10,6 +10,7 @@ namespace CQRS.CORE.Interfaces
     public interface IEmployeeRepository
     {
         Task<int> GetNumberOfEmployeesAsync();
+        Task<int> GetUserNumberOfEmployeesAsync(string appUserId);
         Task<IEnumerable<EmployeeEntity>> GetUserEmployeesAsync(string appUserId);
         Task<IEnumerable<EmployeeEntity>> GetEmployeesAsync();
         Task<EmployeeEntity> GetEmployeeByIdAsync(Guid id);

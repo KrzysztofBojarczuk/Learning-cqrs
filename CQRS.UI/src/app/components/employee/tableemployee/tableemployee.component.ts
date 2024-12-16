@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { EmployeeService } from '../../services/employee.service';
-import { Employee } from '../../models/employee';
+
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
+import { Employee } from '../../../models/employee';
+import { EmployeeService } from '../../../services/employee.service';
 
 @Component({
   selector: 'app-tableemployee',

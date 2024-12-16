@@ -28,6 +28,17 @@ namespace CQRS.API.Controllers
             return Ok(employeeDtos);
         }
 
+
+        [HttpGet("GetUserNumberOfEmployee")]
+        public async Task<IActionResult> GetUserNumberOfEmployeesAsync()
+        {
+            var userId = userManager.GetUserId(User);
+
+            var result = await sender.Send(new GetUserNumberOfEmployeesQuery(userId));
+
+            return Ok(result);
+        }
+
         [HttpPost("")]
         public async Task<IActionResult> AddEmployeeAsync([FromBody] EmployeeCreateDto employeeDto)
         {
