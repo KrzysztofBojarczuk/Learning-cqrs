@@ -5,45 +5,44 @@
   <mat-card style="padding: 20px">
     <form
       [formGroup]="loginForm"
-      (ngSubmit)="onSubmit(loginForm.value)"
       class="row"
       style="max-width: 400px; width: 100%"
+      (ngSubmit)="onSubmit()"
     >
       <mat-form-field>
         <mat-label>Email</mat-label>
-        <input
-          matInput
-          formControlName="email"
-          (blur)="updateErrorMessage()"
-          required
-        />
-        @if (loginForm.invalid) {
-        <mat-error>{{ errorMessage() }}</mat-error>
-        }
+        <input matInput formControlName="email" />
+        <mat-error *ngIf="loginForm.get('email')?.invalid">
+          Invalid email
+        </mat-error>
       </mat-form-field>
 
       <mat-form-field>
         <mat-label>Password</mat-label>
-        <input
-          matInput
-          type="password"
-          formControlName="password"
-          (blur)="updateErrorMessage()"
-          required
-        />
-        @if (loginForm.invalid) {
-        <mat-error>{{ errorMessage() }}</mat-error>
-        }
+        <input matInput type="password" formControlName="password" />
+        <mat-error *ngIf="loginForm.get('password')?.invalid">
+          Password must be at least 6 characters long
+        </mat-error>
       </mat-form-field>
 
-      <div>
+      <div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
+
+      <div class="flex justify-content-center gap-3">
         <button
           mat-raised-button
           color="primary"
           type="submit"
           [disabled]="loginForm.invalid"
         >
-          Sign up
+          Log In
+        </button>
+        <button
+          style="margin-left: 20px"
+          mat-raised-button
+          color="primary"
+          (click)="moveToSignUp()"
+        >
+          Register
         </button>
       </div>
     </form>
