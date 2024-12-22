@@ -9,6 +9,7 @@ namespace CQRS.CORE.Interfaces
 {
     public interface IAddressRepository
     {
+        Task<IEnumerable<AddressEntity>> GetAllAddressesAsync();
         Task<IEnumerable<AddressEntity>> GetUserAddressesAsync(string appUserId);
         Task<AddressEntity> GetAddressByIdAsync(Guid id);
         Task<AddressEntity> AddAddressAsync(AddressEntity entity);

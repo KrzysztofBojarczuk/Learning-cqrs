@@ -12,6 +12,11 @@ namespace CQRS.INFRASTRUCTURE.Repositories
 {
     public class AddressRepository(AppDbContext dbContext) : IAddressRepository
     {
+        public async Task<IEnumerable<AddressEntity>> GetAllAddressesAsync()
+        {
+            return await dbContext.Address.ToListAsync();
+        }
+
         public async Task<AddressEntity> AddAddressAsync(AddressEntity entity)
         {
             entity.Id = Guid.NewGuid();
