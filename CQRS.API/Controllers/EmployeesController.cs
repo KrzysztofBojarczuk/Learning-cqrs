@@ -39,7 +39,7 @@ namespace CQRS.API.Controllers
             return Ok(result);
         }
 
-        [HttpPost("")]
+        [HttpPost()]
         public async Task<IActionResult> AddEmployeeAsync([FromBody] EmployeeCreateDto employeeDto)
         {
             var userId = userManager.GetUserId(User);
@@ -55,7 +55,7 @@ namespace CQRS.API.Controllers
             return Ok(result);
         }
 
-        [HttpGet("")]
+        [HttpGet()]
         public async Task<IActionResult> GetAllEmployeesAsync()
         {
             var employees = await sender.Send(new GetAllEmployeesQuery());

@@ -18,6 +18,16 @@ namespace CQRS.API.Controllers
     [Authorize]
     public class AddressController(ISender sender, UserManager<AppUserEntity> userManager, IMapper mapper) : ControllerBase
     {
+        [HttpGet()]
+        public async Task<IActionResult> GetAllAddressesAsync()
+        {
+            var addresses = await sender.Send(new GetAllAddressesQuery());
+
+            var addressesDtos = mapper.Map<IEnumerable<AddressGetDto>>(addresses);
+
+            return Ok(addressesDtos);
+        }
+
         [HttpGet("user")]
         public async Task<IActionResult> GetUserAddressAsync()
         {
@@ -30,7 +40,7 @@ namespace CQRS.API.Controllers
             return Ok(addressDtos);
         }
 
-        [HttpPost("")]
+        [HttpPost()]
         public async Task<IActionResult> AddAddressAsync([FromBody] AddressCreateDto addressDto)
         {
             var userId = userManager.GetUserId(User);

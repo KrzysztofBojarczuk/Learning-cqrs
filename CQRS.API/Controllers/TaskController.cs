@@ -29,7 +29,7 @@ namespace CQRS.API.Controllers
             return Ok(employeeDtos);
         }
 
-        [HttpPost("")]
+        [HttpPost()]
         public async Task<IActionResult> AddTaskAsync([FromBody] TaskCreateDto taskDto)
         {
             var userId = userManager.GetUserId(User);
